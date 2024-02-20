@@ -48,47 +48,67 @@ export default function CardList() {
   const menuItems = [
     {
       title: "Студенти",
-      icon: <PersonOutlineOutlinedIcon />,
+      icon: (
+        <PersonOutlineOutlinedIcon
+          sx={{ width: 48 + "px", height: 48 + "px" }}
+        />
+      ),
       value: data.students.length || 0,
     },
     {
       title: "Викладачі",
-      icon: <ImportContactsOutlinedIcon />,
+      icon: (
+        <ImportContactsOutlinedIcon
+          sx={{ width: 48 + "px", height: 48 + "px" }}
+        />
+      ),
       value: data.teachers.length || 0,
     },
     {
       title: "Групи",
-      icon: <GroupOutlinedIcon />,
+      icon: <GroupOutlinedIcon sx={{ width: 48 + "px", height: 48 + "px" }} />,
       value: data.groups.length || 0,
     },
   ];
 
   return (
-    <Box sx={{ width: 100 + "%", maxWidth: 280, bgcolor: "background.paper" }}>
+    <Box
+      sx={{
+        width: 100 + "%",
+        maxWidth: 280 + "px",
+        bgcolor: "background.paper",
+      }}>
       <nav aria-label="secondary mailbox folders">
         <List>
           {menuItems.map((item) => (
-            <ListItem sx={{ marginBottom: 15 }} disablePadding key={item.title}>
-              <Card sx={{ minWidth: 160 }}>
+            <ListItem
+              sx={{ marginBottom: 15 + "px" }}
+              disablePadding
+              key={item.title}>
+              <Card sx={{ minWidth: 160 + "px" }}>
                 <CardContent
                   sx={{
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
                     "&:last-child": {
-                      paddingBottom: 16,
+                      paddingBottom: 16 + "px",
                     },
                   }}>
                   <div style={{ marginRight: 8 }}>
                     <ListItemIcon
-                      sx={{ color: "#1677ff", width: 48, height: 48 }}>
+                      sx={{
+                        color: "#1677ff",
+                        width: 48 + "px",
+                        height: 48 + "px",
+                      }}>
                       {item.icon}
                     </ListItemIcon>
                   </div>
-                  <Divider orientation="vertical" className="h-12" />
-                  <div style={{ marginLeft: 8 }}>
+                  <Divider orientation="vertical" sx={{ height: 48 + "px" }} />
+                  <div style={{ marginLeft: 8 + "px" }}>
                     <div
-                      style={{ marginBottom: 8 }}
+                      style={{ marginBottom: 8 + "px" }}
                       className="text-center text-3xl">
                       {item.value}
                     </div>
