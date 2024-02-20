@@ -48,30 +48,27 @@ export default function CardList() {
   const menuItems = [
     {
       title: "Студенти",
-      icon: <PersonOutlineOutlinedIcon className="w-12 h-12" />,
+      icon: <PersonOutlineOutlinedIcon />,
       value: data.students.length || 0,
     },
     {
       title: "Викладачі",
-      icon: <ImportContactsOutlinedIcon className="w-12 h-12" />,
+      icon: <ImportContactsOutlinedIcon />,
       value: data.teachers.length || 0,
     },
     {
       title: "Групи",
-      icon: <GroupOutlinedIcon className="w-12 h-12" />,
+      icon: <GroupOutlinedIcon />,
       value: data.groups.length || 0,
     },
   ];
 
   return (
-    <Box sx={{ width: "100%", maxWidth: 280, bgcolor: "background.paper" }}>
+    <Box sx={{ width: 100 + "%", maxWidth: 280, bgcolor: "background.paper" }}>
       <nav aria-label="secondary mailbox folders">
         <List>
           {menuItems.map((item) => (
-            <ListItem
-              sx={{ marginBottom: "15px" }}
-              disablePadding
-              key={item.title}>
+            <ListItem sx={{ marginBottom: 15 }} disablePadding key={item.title}>
               <Card sx={{ minWidth: 160 }}>
                 <CardContent
                   sx={{
@@ -79,17 +76,22 @@ export default function CardList() {
                     justifyContent: "center",
                     alignItems: "center",
                     "&:last-child": {
-                      paddingBottom: "16px",
+                      paddingBottom: 16,
                     },
                   }}>
-                  <div className="mr-2">
-                    <ListItemIcon sx={{ color: "#1677ff" }}>
+                  <div style={{ marginRight: 8 }}>
+                    <ListItemIcon
+                      sx={{ color: "#1677ff", width: 48, height: 48 }}>
                       {item.icon}
                     </ListItemIcon>
                   </div>
                   <Divider orientation="vertical" className="h-12" />
-                  <div className="text-center mb-2 pl-3 ml-3 text-3xl">
-                    {item.value}
+                  <div style={{ marginLeft: 8 }}>
+                    <div
+                      style={{ marginBottom: 8 }}
+                      className="text-center text-3xl">
+                      {item.value}
+                    </div>
                   </div>
                 </CardContent>
               </Card>
