@@ -82,7 +82,7 @@ export default function CardList() {
         <List>
           {menuItems.map((item) => (
             <ListItem
-              sx={{ marginBottom: 15 + "px" }}
+              style={{ marginBottom: 15 + "px" }}
               disablePadding
               key={item.title}>
               <Card sx={{ minWidth: 160 + "px" }}>
