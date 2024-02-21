@@ -31,7 +31,7 @@ const ChartComponent = () => {
         labels: groupNames,
         datasets: [
           {
-            label: "Чистый доход группы",
+            // label: "Чистый доход группы",
             data: groupClearIncomes,
             backgroundColor: [
               "rgba(255, 99, 132, 0.2)",
@@ -53,9 +53,7 @@ const ChartComponent = () => {
       };
 
       const ctx = chartRef.current.getContext("2d");
-      // Проверяем, существует ли предыдущий график
       if (chartRef.current.chart) {
-        // Уничтожаем предыдущий график
         chartRef.current.chart.destroy();
       }
       // Создаем новый график
@@ -74,8 +72,8 @@ const ChartComponent = () => {
   }, [chartRef.current]);
 
   return (
-    <div>
-      <canvas ref={chartRef}></canvas>
+    <div className="" >
+      <canvas style={{width: 1000}}  ref={chartRef}></canvas>
     </div>
   );
 };

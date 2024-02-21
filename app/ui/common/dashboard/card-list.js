@@ -4,23 +4,13 @@ import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
-import InboxIcon from "@mui/icons-material/Inbox";
-import DraftsIcon from "@mui/icons-material/Drafts";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import GroupOutlinedIcon from "@mui/icons-material/GroupOutlined";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import ImportContactsOutlinedIcon from "@mui/icons-material/ImportContactsOutlined";
-import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
-import QueryStatsOutlinedIcon from "@mui/icons-material/QueryStatsOutlined";
-import { data } from "@/app/api/data/data";
 
 export default function CardList() {
   const [data, setData] = useState({
@@ -75,11 +65,11 @@ export default function CardList() {
     <Box
       sx={{
         width: 100 + "%",
-        maxWidth: 280 + "px",
+        maxWidth: 160 + "px",
         bgcolor: "background.paper",
       }}>
       <nav aria-label="secondary mailbox folders">
-        <List>
+        <List style={{paddingTop: 0}}>
           {menuItems.map((item) => (
             <ListItem
               style={{ marginBottom: 15 + "px" }}
@@ -106,7 +96,7 @@ export default function CardList() {
                     </ListItemIcon>
                   </div>
                   <Divider orientation="vertical" sx={{ height: 48 + "px" }} />
-                  <div style={{ marginLeft: 8 + "px" }}>
+                  <div className="ml-4">
                     <div
                       style={{ marginBottom: 8 + "px" }}
                       className="text-center text-3xl">
