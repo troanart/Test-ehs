@@ -85,7 +85,7 @@ export default function CardList() {
               style={{ marginBottom: 15 + "px" }}
               disablePadding
               key={item.title}>
-              <Card sx={{ minWidth: 160 + "px" }}>
+              <Card style={{ minWidth: 160 + "px" }}>
                 <CardContent
                   sx={{
                     display: "flex",

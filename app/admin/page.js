@@ -1,12 +1,12 @@
 import React from "react";
 import CardList from "../ui/common/dashboard/card-list";
-import Diagrams from "../ui/common/dashboard/diagrams";
+import DiagramsCards from "../ui/common/dashboard/diagrams-card";
 
 const Admin = () => {
   return (
     <div>
       <CardList />
-      {/* <Diagrams /> */}
+      <DiagramsCards />
     </div>
   );
 };

@@ -1,34 +1,83 @@
+"use client";
+
+import React, { useEffect, useState, useRef } from "react";
 import Chart from "chart.js/auto";
 
-export default function Diagrams() {
-  // (async function () {
-  //   const data = [
-  //     { year: 2010, count: 10 },
-  //     { year: 2011, count: 20 },
-  //     { year: 2012, count: 15 },
-  //     { year: 2013, count: 25 },
-  //     { year: 2014, count: 22 },
-  //     { year: 2015, count: 30 },
-  //     { year: 2016, count: 28 },
-  //   ];
+const ChartComponent = () => {
+  const [groups, setGroups] = useState([]);
+  const chartRef = useRef(null);
 
-  //   new Chart(document.getElementById("acquisitions"), {
-  //     type: "bar",
-  //     data: {
-  //       labels: data.map((row) => row.year),
-  //       datasets: [
-  //         {
-  //           label: "Acquisitions by year",
-  //           data: data.map((row) => row.count),
-  //         },
-  //       ],
-  //     },
-  //   });
-  // })();
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/api/data/groups");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const responseData = await response.json();
+        setGroups(responseData);
+      } catch (error) {
+        console.error("There was a problem fetching the data:", error);
+      }
+    };
+    fetchData();
+
+    const groupNames = groups.map((group) => group.name);
+    const groupClearIncomes = groups.map((group) => group.cleareIncome);
+
+    if (chartRef.current) {
+      const labels = groupNames;
+      const data = {
+        labels: groupNames,
+        datasets: [
+          {
+            label: "Чистый доход группы",
+            data: groupClearIncomes,
+            backgroundColor: [
+              "rgba(255, 99, 132, 0.2)",
+              "rgba(255, 159, 64, 0.2)",
+              "rgba(255, 205, 86, 0.2)",
+              "rgba(75, 192, 192, 0.2)",
+              // Добавьте другие цвета, если нужно
+            ],
+            borderColor: [
+              "rgb(255, 99, 132)",
+              "rgb(255, 159, 64)",
+              "rgb(255, 205, 86)",
+              "rgb(75, 192, 192)",
+              // Добавьте другие цвета, если нужно
+            ],
+            borderWidth: 1,
+          },
+        ],
+      };
+
+      const ctx = chartRef.current.getContext("2d");
+      // Проверяем, существует ли предыдущий график
+      if (chartRef.current.chart) {
+        // Уничтожаем предыдущий график
+        chartRef.current.chart.destroy();
+      }
+      // Создаем новый график
+      chartRef.current.chart = new Chart(ctx, {
+        type: "bar",
+        data: data,
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+    }
+  }, [chartRef.current]);
 
   return (
-    <div style="width: 800px;">
-      <canvas id="acquisitions"></canvas>
+    <div>
+      <canvas ref={chartRef}></canvas>
     </div>
   );
-}
+};
+
+export default ChartComponent;
