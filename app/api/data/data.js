@@ -216,8 +216,8 @@ export const teachers = [
   {
     id: 4,
     name: "Дмитрий Ольман",
-    bidGroup: 250,
-    bidIndiv: 200,
+    bidGroup: 350,
+    bidIndiv: 300,
     group: "Группа офлайн 2",
   },
 ];

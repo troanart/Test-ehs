@@ -65,11 +65,11 @@ export default function CardList() {
     <Box
       sx={{
         width: 100 + "%",
-        maxWidth: 160 + "px",
+        // maxWidth: 160 + "px",
         bgcolor: "background.paper",
       }}>
       <nav aria-label="secondary mailbox folders">
-        <List style={{paddingTop: 0}}>
+        <List className="flex gap-2" style={{ paddingTop: 0 }}>
           {menuItems.map((item) => (
             <ListItem
               style={{ marginBottom: 15 + "px" }}
