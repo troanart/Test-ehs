@@ -35,12 +35,15 @@ export default function TopTeacherList() {
         width: "100%",
         bgcolor: "background.paper",
       }}>
-      <List className="flex  gap-5 py-0">
+      <List className="flex gap-5 py-0">
         {teachers.slice(0, 2).map((item) => (
           <ListItem key={item.id} className="flex" disablePadding>
             <Card className="w-[340px] min-h-[93px] ">
               <CardContent>
-                <Typography>{item.name}</Typography>
+                <div className="bg-[#1677ff] w-fit p-1 rounded">
+                  <Typography className="text-white">{item.name}</Typography>
+                </div>
+                <div></div>
               </CardContent>
             </Card>
           </ListItem>
