@@ -1,6 +1,13 @@
 "use client";
 
-import { Card, CardContent, List, ListItem } from "@mui/material";
+import {
+  Box,
+  Card,
+  CardContent,
+  List,
+  ListItem,
+  Typography,
+} from "@mui/material";
 import React, { useEffect, useState } from "react";
 
 export default function TopTeacherList() {
@@ -23,21 +30,22 @@ export default function TopTeacherList() {
   }, []);
 
   return (
-    <Card>
-      <CardContent>
-        <List className="flex gap-4">
-          {teachers.map((item) => (
-            <ListItem key={item.id} disablePadding>
-              <Card>
-                <CardContent>
-                  {console.log(item.name)}
-                  {item.name}
-                </CardContent>
-              </Card>
-            </ListItem>
-          ))}
-        </List>
-      </CardContent>
-    </Card>
+    <Box
+      sx={{
+        width: "100%",
+        bgcolor: "background.paper",
+      }}>
+      <List className="flex  gap-5 py-0">
+        {teachers.slice(0, 2).map((item) => (
+          <ListItem key={item.id} className="flex" disablePadding>
+            <Card className="w-[340px] min-h-[93px] ">
+              <CardContent>
+                <Typography>{item.name}</Typography>
+              </CardContent>
+            </Card>
+          </ListItem>
+        ))}
+      </List>
+    </Box>
   );
 }
