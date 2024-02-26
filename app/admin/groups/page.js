@@ -1,10 +1,10 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import ColorToggleButton from "@/app/ui/common/Main/filter-btn";
+import ColorToggleButton from "@/app/ui/common/groups/filter-btn";
 
 import Demo from "@/app/ui/common/groups/color-picker";
 import AddGroups from "@/app/ui/common/groups/add-button";
-import ResponsiveGrid from "@/app/ui/common/groups/groups-card-list";
+import GroupsCardsList from "@/app/ui/common/groups/groups-card-list";
 
 export default function Groups() {
   return (
@@ -33,7 +33,7 @@ export default function Groups() {
         </ul>
         <AddGroups />
       </div>
-      <ResponsiveGrid />
+      <GroupsCardsList />
     </div>
   );
 }

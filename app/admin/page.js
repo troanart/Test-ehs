@@ -8,7 +8,7 @@ import TopTeacherList from "../ui/common/dashboard/teacher-top-list";
 const Admin = () => {
   return (
     <div>
-      <div className=" flex mb-8">
+      <div className=" flex mb-5">
         <CardList />
         <TopTeacherList />
       </div>

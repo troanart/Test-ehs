@@ -143,6 +143,18 @@ export const students = [
     checkLessons: 4,
     parentName: "Иван Морозов",
   },
+  {
+    id: 13,
+    name: "Харитон Новамба",
+    contacts: "+38093155677",
+    group: "Группа офлайн 2",
+    groupType: "offline",
+    age: 24,
+    tariff: 3600,
+    allLessons: 11,
+    checkLessons: 4,
+    parentName: "Иван Морозов",
+  },
 ];
 
 export const groups = [
@@ -184,7 +196,7 @@ export const groups = [
     income: 11200,
     cleareIncome: 6400,
     teacher: "Дмитрий Ольман",
-    students: [students[9], students[10], students[11]],
+    students: [students[9], students[10], students[11], students[12]],
   },
 ];
 

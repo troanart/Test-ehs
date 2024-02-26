@@ -1,86 +1,73 @@
-"use client";
-import React, { useState, useEffect } from "react";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
-// import api from "@/app/utils/api";
+import {
+  Box,
+  FilledInput,
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  InputLabel,
+  MenuItem,
+  Radio,
+  RadioGroup,
+  Select,
+} from "@mui/material";
+import React, { useEffect } from "react";
 
-const AddGroupsForm = () => {
+export default function AddGroupsForm() {
+  const [teachers, setTeachers] = React.useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/api/data/teachers");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const responseData = await response.json();
+        setTeachers(responseData);
+      } catch (error) {
+        console.error("There was a problem fetching the data:", error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const handleChange = (event) => {
+    setTeachers(event.target.value);
+  };
   return (
-    <div>
-      <form className="p-2">
-        <FormControl className="flex justify-center mb-4 gap-5 min-w-[450px] flex-row">
-          <FormControl className="inline-block w-[100%]">
-            <TextField
-              id="outlined-basic-login"
-              label="Назва групи"
-              // value={login}
-              variant="outlined"
-              type="text"
-            />
-          </FormControl>
-          {/* <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Викладач</InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              // value={selectedTeacher}
-              label="Викладач"
-              onChange={handleTeacherChange}>
-              {teachers.map((teacher) => (
-                <MenuItem key={teacher.id} value={teacher.id}>
+    <form method="post">
+      <FormControl>
+        <InputLabel htmlFor="component-filled">Назва групи</InputLabel>
+        <FilledInput id="component-filled" />
+      </FormControl>
+      <FormControl>
+        <FormLabel id="demo-radio-buttons-group-label">Тип групи</FormLabel>
+        <RadioGroup
+          aria-labelledby="demo-radio-buttons-group-label"
+          defaultValue="female"
+          name="radio-buttons-group">
+          <FormControlLabel value="online" control={<Radio />} label="Online" />
+          <FormControlLabel value="ofline" control={<Radio />} label="Ofline" />
+        </RadioGroup>
+      </FormControl>
+      <FormControl fullWidth>
+        <InputLabel id="demo-simple-select-label">Викладач</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={teachers}
+          label="Викладач"
+          onChange={handleChange}>
+          {teachers.length > 0 &&
+            teachers.map((teacher) => {
+              return (
+                <MenuItem key={teacher.id} value={teacher.name}>
                   {teacher.name}
                 </MenuItem>
-              ))}
-            </Select>
-          </FormControl> */}
-        </FormControl>
-
-        <FormControl className="mb-5 w-[100%] text-center ">
-          <FormLabel id="demo-row-radio-buttons-group-label text-center ">
-            Тип групи
-          </FormLabel>
-          <RadioGroup
-            className="justify-center"
-            row
-            aria-labelledby="demo-row-radio-buttons-group-label"
-            name="row-radio-buttons-group">
-            <FormControlLabel
-              value="online"
-              control={<Radio />}
-              label="Онлайн"
-            />
-            <FormControlLabel
-              value="offline"
-              control={<Radio />}
-              label="Офлайн"
-            />
-            <FormControlLabel
-              value="corporate"
-              control={<Radio />}
-              label="Корпоративна"
-            />
-          </RadioGroup>
-        </FormControl>
-        <FormControl className="w-[100%]">
-          <InputLabel id="demo-simple-select-label">Викладач</InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            // value={selectedTeacher}
-            label="Викладач"></Select>
-          <div></div>
-        </FormControl>
-      </form>
-    </div>
+              );
+            })}
+        </Select>
+      </FormControl>
+    </form>
   );
-};
-
-export default AddGroupsForm;
+}
