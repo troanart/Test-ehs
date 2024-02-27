@@ -22,7 +22,7 @@ export default function StatsInCard({ item }) {
         <Typography>
           Чистий прибуток групи:{" "}
           <span className="text-black text-xl bg-sky-400 p-1 rounded">
-            {item.income}
+            {item.cleareIncome}
           </span>
         </Typography>
       </ListItem>

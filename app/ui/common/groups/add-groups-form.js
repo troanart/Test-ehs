@@ -1,19 +1,23 @@
+"use client";
+import React, { useEffect, useState } from "react";
 import {
-  Box,
-  FilledInput,
+  Button,
   FormControl,
-  FormControlLabel,
   FormLabel,
-  InputLabel,
   MenuItem,
   Radio,
   RadioGroup,
   Select,
+  TextField,
+  FormControlLabel,
 } from "@mui/material";
-import React, { useEffect } from "react";
 
 export default function AddGroupsForm() {
-  const [teachers, setTeachers] = React.useState("");
+  const [teachers, setTeachers] = useState([]);
+  const [selectedTeacher, setSelectedTeacher] = useState("");
+  const [groupName, setGroupName] = useState("");
+  const [groupType, setGroupType] = useState("offline");
+  const [formErrors, setFormErrors] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,43 +35,81 @@ export default function AddGroupsForm() {
     fetchData();
   }, []);
 
-  const handleChange = (event) => {
-    setTeachers(event.target.value);
+  const validateForm = () => {
+    const errors = {};
+    const specialChars = /[!@#$%^&*(),.?":{}|<>]/;
+    if (!groupName.trim()) {
+      errors.groupName = "Назва групи обов'язкова";
+    } else if (specialChars.test(groupName)) {
+      errors.groupName = "Тільки латиниця і цифри";
+    }
+    if (!selectedTeacher) {
+      errors.selectedTeacher = "Вибір викладача обов'язковий";
+    }
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
   };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (validateForm()) {
+      // отправить данные формы
+      console.log("Form is valid. Submitting...");
+    } else {
+      console.log("Form is invalid. Please correct errors.");
+    }
+  };
+
   return (
-    <form method="post">
-      <FormControl>
-        <InputLabel htmlFor="component-filled">Назва групи</InputLabel>
-        <FilledInput id="component-filled" />
+    <form onSubmit={handleSubmit} className="flex flex-col">
+      <FormControl className="mb-4">
+        <TextField
+          required
+          id="outlined-required"
+          label="Назва"
+          value={groupName}
+          onChange={(e) => setGroupName(e.target.value)}
+          error={!!formErrors.groupName}
+          helperText={formErrors.groupName}
+        />
       </FormControl>
-      <FormControl>
-        <FormLabel id="demo-radio-buttons-group-label">Тип групи</FormLabel>
+      <FormControl className="mb-4 ">
+        <FormLabel id="demo-radio-buttons-group-label">Тип групи *</FormLabel>
         <RadioGroup
           aria-labelledby="demo-radio-buttons-group-label"
-          defaultValue="female"
-          name="radio-buttons-group">
+          defaultValue="offline"
+          name="radio-buttons-group"
+          value={groupType}
+          onChange={(e) => setGroupType(e.target.value)}>
           <FormControlLabel value="online" control={<Radio />} label="Online" />
-          <FormControlLabel value="ofline" control={<Radio />} label="Ofline" />
+          <FormControlLabel
+            value="offline"
+            control={<Radio />}
+            label="Offline"
+          />
         </RadioGroup>
       </FormControl>
-      <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Викладач</InputLabel>
+      <FormControl className="mb-4">
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={teachers}
-          label="Викладач"
-          onChange={handleChange}>
-          {teachers.length > 0 &&
-            teachers.map((teacher) => {
-              return (
-                <MenuItem key={teacher.id} value={teacher.name}>
-                  {teacher.name}
-                </MenuItem>
-              );
-            })}
+          value={selectedTeacher}
+          onChange={(e) => setSelectedTeacher(e.target.value)}
+          error={!!formErrors.selectedTeacher}
+          displayEmpty>
+          <MenuItem disabled value="">
+            <em>Виберіть викладача *</em>
+          </MenuItem>
+          {teachers.map((teacher) => (
+            <MenuItem key={teacher.id} value={teacher.name}>
+              {teacher.name}
+            </MenuItem>
+          ))}
         </Select>
       </FormControl>
+      <Button variant="outlined" type="submit">
+        Створити групу
+      </Button>
     </form>
   );
 }

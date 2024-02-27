@@ -23,7 +23,10 @@ export default function GroupCard(item) {
   const [showMore, setShowMore] = useState(false);
   return (
     <Grid item xs={2} sm={4} md={4} key={item.name}>
-      <Item className="border-l-8 pt-9 border-emerald-500 relative">
+      <Item
+        className={`border-l-8 pt-9 border-emerald-500 relative ${
+          item.type === "online" ? "border-emerald-500" : "border-pink-500"
+        }`}>
         <div className="border rounded-md  mt-1  border-sky-500 p-0.5 w-fit absolute top-0 right-0 text-black">
           {/* <ImportContactsOutlinedIcon className="text-emerald-400" /> */}
           {item.teacher}
