@@ -24,6 +24,10 @@ export default function GroupsCardsList() {
     fetchData();
   }, []);
 
+  const deleteGroup = (groupId) => {
+    setGroups(groups.filter((group) => group.id !== groupId));
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid
@@ -31,8 +35,10 @@ export default function GroupsCardsList() {
         spacing={{ xs: 2, md: 3 }}
         columns={{ xs: 4, sm: 8, md: 12 }}>
         {groups.length > 0 &&
-          groups.map((item, index) => {
-            return <GroupCard {...item} key={index} />;
+          groups.map((item) => {
+            return (
+              <GroupCard item={item} key={item.id} onDelete={deleteGroup} />
+            );
           })}
       </Grid>
     </Box>
