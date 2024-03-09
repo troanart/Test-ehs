@@ -65,25 +65,19 @@ export default function CardList() {
     <Box
       sx={{
         width: 100 + "%",
-        // maxWidth: 160 + "px",
+        maxWidth: 50 + "%",
         bgcolor: "background.paper",
       }}>
       <nav aria-label="secondary mailbox folders">
-        <List className="flex gap-2" style={{ paddingTop: 0 }}>
+        <List className="flex" style={{ padding: 0 }}>
           {menuItems.map((item) => (
-            <ListItem
-              style={{ marginBottom: 15 + "px" }}
-              disablePadding
-              key={item.title}>
+            <ListItem disablePadding key={item.title}>
               <Card style={{ minWidth: 160 + "px" }}>
                 <CardContent
                   sx={{
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                    "&:last-child": {
-                      paddingBottom: 16 + "px",
-                    },
                   }}>
                   <div style={{ marginRight: 8 }}>
                     <ListItemIcon
@@ -98,7 +92,7 @@ export default function CardList() {
                   <Divider orientation="vertical" sx={{ height: 48 + "px" }} />
                   <div className="ml-4">
                     <div
-                      style={{ marginBottom: 8 + "px" }}
+                      // style={{ marginBottom: 8 + "px" }}
                       className="text-center text-3xl">
                       {item.value}
                     </div>

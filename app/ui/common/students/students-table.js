@@ -4,7 +4,6 @@ import { Table } from "antd";
 import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-// import api from '@/app/utils/api';
 
 const columns = [
   {
@@ -43,7 +42,6 @@ const columns = [
   {
     title: "Відвіданих занять",
     dataIndex: "checkLessons",
-
     render: (name) => `${name}`,
   },
   {
@@ -66,8 +64,8 @@ const columns = [
 ];
 
 const StudentTable = () => {
-  const [data, setData] = useState();
-  const [loading, setLoading] = useState(false);
+  const [students, setStudents] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [tableParams, setTableParams] = useState({
     pagination: {
       current: 1,
@@ -78,24 +76,28 @@ const StudentTable = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const studentsData = await api.getStudents();
-        setData(studentsData);
+        const response = await fetch("/api/data/students");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const studentsData = await response.json();
+        setStudents(studentsData);
         setLoading(false);
-        setTableParams({
-          ...tableParams,
+        setTableParams((prevParams) => ({
+          ...prevParams,
           pagination: {
-            ...tableParams.pagination,
-            total: 200,
+            ...prevParams.pagination,
+            total: studentsData.length, // Установите общее количество элементов
           },
-        });
+        }));
       } catch (error) {
         console.error("Error fetching data:", error);
-        loading;
+        setLoading(false);
       }
     };
 
     fetchData();
-  });
+  }, []);
 
   const handleTableChange = (pagination, filters, sorter) => {
     setTableParams({
@@ -103,20 +105,18 @@ const StudentTable = () => {
       filters,
       ...sorter,
     });
-
-    if (pagination.pageSize !== tableParams.pagination?.pageSize) {
-      setData([]);
-    }
   };
+
   return (
     <Table
       columns={columns}
       rowKey={(record) => record._id}
-      dataSource={data}
+      dataSource={students}
       pagination={tableParams.pagination}
       loading={loading}
       onChange={handleTableChange}
     />
   );
 };
+
 export default StudentTable;
