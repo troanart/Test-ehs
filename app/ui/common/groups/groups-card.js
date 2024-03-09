@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { experimentalStyled as styled } from "@mui/material/styles";
-import { List, ListItem, Typography } from "@mui/material";
+import { Button, List, ListItem, Typography } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import SimpleDialog from "./icon-click";
 import MoreStudentsIndicator from "./more-students-indicator";
@@ -68,16 +68,6 @@ export default function GroupCard({ item, onDelete }) {
           </Typography>
 
           <SimpleDialog groupId={item.id} onDelete={handleDelete} />
-          {/* <Button
-            onClick={() => {
-              setIsEditing(false);
-              // Здесь вызывайте функцию для сохранения изменений в вашем API
-              // Например: saveGroupChanges(item.id, groupName, teacherName);
-            }}
-            variant="outlined"
-            className="bg-blue-500 hover:bg-blue-600 text-white ml-2">
-            Сохранить
-          </Button> */}
         </div>
         <div className="border-2 rounded p-4 relative border-sky-500">
           <List disablePadding className="flex gap-2 mb-3 flex-wrap flex-row">
