@@ -3,8 +3,8 @@
 import React from "react";
 import { Layout, theme } from "antd";
 import AccountMenu from "./notification-modal";
-import BreadcrumbComponent from "./breadcramp";
-import AvatarComponent from "./avatar";
+import BreadcrumbComponent from "../../../Breadcrumb/Breadcramb";
+import AvatarComponent from "../../../Avatar/avatar";
 import { Divider } from "antd";
 const { Header } = Layout;
 
