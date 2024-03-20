@@ -1,16 +1,24 @@
 'use client'
 
 import React, { useState } from "react";
+
 import { experimentalStyled as styled } from "@mui/material/styles";
 import { List, ListItem, Typography } from "@mui/material";
-import PersonIcon from "@mui/icons-material/Person";
-import SimpleDialog from "../SimpleDialogDemo/SimpleDialogDemo";
-import MoreStudentsIndicator from "../MoreStudentsIndicator/MoreStudentsIndicator";
-import cn from "classnames";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
-import ColapseBtn from "../CollapseBtn/CollapseBtn";
-import StatsInCard from "../StatsInCard/StatsInCard";
+import PersonIcon from "@mui/icons-material/Person";
+
+import cn from "classnames";
+
+import {
+  SimpleDialogDemo ,
+  MoreStudentsIndicator ,
+  CollapseBtn, 
+ StatsInCard ,
+} from '@/components'
+
+
+
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -69,7 +77,7 @@ export default function GroupCard({ item, onDelete }) {
             )}
           </Typography>
 
-          <SimpleDialog groupId={item.id} onDelete={handleDelete} />
+          <SimpleDialogDemo groupId={item.id} onDelete={handleDelete} />
         </div>
         <div className="border-2 rounded p-4 relative border-sky-500">
           <List disablePadding className="flex gap-2 mb-3 flex-wrap flex-row">
@@ -100,7 +108,7 @@ export default function GroupCard({ item, onDelete }) {
               <ListItem
                 key="collapse-button"
                 className="w-fit absolute bottom-[-29px] right-[-15px] p-0 rounded ">
-                <ColapseBtn onClick={() => setShowMore(false)} />
+                <CollapseBtn onClick={() => setShowMore(false)} />
               </ListItem>
             )}
             {item.students?.map((student, index) => {
