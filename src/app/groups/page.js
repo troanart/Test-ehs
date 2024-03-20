@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
-import ColorToggleButton from "@/components/ui/common/groups/filter-btn";
-import AddGroups from "@/components/ui/common/groups/add-button";
-import GroupsCardsList from "@/components/ui/common/groups/groups-card-list";
-import Legend from "@/components/ui/common/groups/legend";
+import ColorToggleButton from "@/components/ui/ColorToggleButton/ColorToggleButton";
+import AddGroups from "@/components/ui/AddGroupButton/AddGroupButton";
+import GroupsCardsList from "@/components/ui/GroupsCardsList/GroupsCardsList";
+import Legend from "@/components/ui/Legend/Legend";
 
 export default function Groups() {
   return (
