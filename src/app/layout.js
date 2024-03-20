@@ -1,7 +1,6 @@
 import React from "react";
 import "@/styles/globals.css";
 import HeaderComponents from "@/components/ui/common/Header/components/Header";
-// import FooterComponent from "./ui/common/Footer/Footer";
 import Main from "@/components/ui/common/Main/Main";
 import SiderComponents from "@/components/ui/common/Sider/Sider";
 
