@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { useState, useEffect } from "react";
+
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -12,20 +13,17 @@ import cn from "classnames";
 export default function CardTarget() {
   const [groups, setGroups] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("/api/data/groups");
-        if (!response.ok) {
-          throw new Error("Шось пішло не так");
-        }
-        const responseData = await response.json();
-        setGroups(responseData);
-      } catch (error) {
-        console.log("There was a problem fetching the data:", error);
+  useEffect(async () => {
+    try {
+      const response = await fetch("/api/data/groups");
+      if (!response.ok) {
+        throw new Error("Шось пішло не так");
       }
-    };
-    fetchData();
+      const responseData = await response.json();
+      setGroups(responseData);
+    } catch (error) {
+      console.log("There was a problem fetching the data:", error);
+    }
   }, []);
 
   const data = [

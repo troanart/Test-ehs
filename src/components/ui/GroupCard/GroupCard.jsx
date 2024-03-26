@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import React, { useState } from "react";
 
@@ -11,14 +11,11 @@ import PersonIcon from "@mui/icons-material/Person";
 import cn from "classnames";
 
 import {
-  SimpleDialogDemo ,
-  MoreStudentsIndicator ,
-  CollapseBtn, 
- StatsInCard ,
-} from '@/components'
-
-
-
+  SimpleDialogDemo,
+  MoreStudentsIndicator,
+  CollapseBtn,
+  StatsInCard,
+} from "@/components";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",

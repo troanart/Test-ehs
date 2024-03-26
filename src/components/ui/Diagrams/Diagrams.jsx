@@ -1,24 +1,22 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from "react";
+
 import Chart from "chart.js/auto";
 
-const Diagrams = () => {
+export default function Diagrams() {
   const [groups, setGroups] = useState([]);
   const chartRef = useRef(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("/api/data/groups");
+  useEffect(async () => {
+    try {
+      const response = await fetch("/api/data/groups");
 
-        const responseData = await response.json();
-        setGroups(responseData);
-      } catch (error) {
-        console.error("There was a problem fetching the data:", error);
-      }
-    };
-    fetchData();
+      const responseData = await response.json();
+      setGroups(responseData);
+    } catch (error) {
+      console.error("There was a problem fetching the data:", error);
+    }
 
     const groupNames = groups.map((group) => group.name);
     const groupClearIncomes = groups.map((group) => group.cleareIncome);
@@ -74,6 +72,4 @@ const Diagrams = () => {
       <canvas style={{ width: 1000 }} ref={chartRef}></canvas>
     </div>
   );
-};
-
-export default Diagrams;
+}

@@ -14,7 +14,6 @@ export { default as AddGroupButton } from "./AddGroupButton";
 export { default as AddGroupsForm } from "./AddGroupsForm";
 export { default as CollapseBtn } from "./CollapseBtn";
 export { default as Drawer } from "./Drawer";
-export { default as ColorPicker } from "./ColorPicker";
 export { default as ColorToggleButton } from "./ColorToggleButton";
 export { default as GroupCard } from "./GroupCard";
 export { default as GroupsCardsList } from "./GroupsCardsList";

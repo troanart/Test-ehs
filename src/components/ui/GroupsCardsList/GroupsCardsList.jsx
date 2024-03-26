@@ -1,29 +1,25 @@
 "use client";
+
 import * as React from "react";
 import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import {
-  GroupCard
-}  from "@/components";
+import { GroupCard } from "@/components";
 
 export default function GroupsCardsList() {
   const [groups, setGroups] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("/api/data/groups");
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const responseData = await response.json();
-        setGroups(responseData);
-      } catch (error) {
-        console.error("There was a problem fetching the data:", error);
+  useEffect(async () => {
+    try {
+      const response = await fetch("/api/data/groups");
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
       }
-    };
-    fetchData();
+      const responseData = await response.json();
+      setGroups(responseData);
+    } catch (error) {
+      console.error("There was a problem fetching the data:", error);
+    }
   }, []);
 
   const deleteGroup = (groupId) => {

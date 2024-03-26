@@ -8,7 +8,7 @@ import {
   TeacherTopList,
 } from "@/components";
 
-const Page = () => {
+export default function Page() {
   return (
     <>
       <div className="flex mb-5">
@@ -29,6 +29,4 @@ const Page = () => {
       </div>
     </>
   );
-};
-
-export default Page;
+}

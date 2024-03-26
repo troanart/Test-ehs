@@ -1,6 +1,8 @@
 "use client";
+
 import * as React from "react";
 import { useEffect, useState } from "react";
+
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -19,20 +21,17 @@ export default function CardList() {
     groups: [],
   });
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("/api/data");
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const responseData = await response.json();
-        setData(responseData);
-      } catch (error) {
-        console.error("There was a problem fetching the data:", error);
+  useEffect(async () => {
+    try {
+      const response = await fetch("/api/data");
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
       }
-    };
-    fetchData();
+      const responseData = await response.json();
+      setData(responseData);
+    } catch (error) {
+      console.error("There was a problem fetching the data:", error);
+    }
   }, []);
 
   const menuItems = [

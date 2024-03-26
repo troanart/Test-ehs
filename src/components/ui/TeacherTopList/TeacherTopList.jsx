@@ -1,5 +1,7 @@
 "use client";
 
+import React, { useEffect, useState } from "react";
+
 import {
   Box,
   Card,
@@ -8,25 +10,21 @@ import {
   ListItem,
   Typography,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
 
 export default function TeacherTopList() {
   const [teachers, setTeacher] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("/api/data/teachers");
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const responseData = await response.json();
-        setTeacher(responseData);
-      } catch (error) {
-        console.error("There was a problem fetching the data:", error);
+  useEffect(async () => {
+    try {
+      const response = await fetch("/api/data/teachers");
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
       }
-    };
-    fetchData();
+      const responseData = await response.json();
+      setTeacher(responseData);
+    } catch (error) {
+      console.error("There was a problem fetching the data:", error);
+    }
   }, []);
 
   return (

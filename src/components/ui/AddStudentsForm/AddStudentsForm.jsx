@@ -1,5 +1,7 @@
 "use client";
+
 import React, { useState, useEffect } from "react";
+
 import TextField from "@mui/material/TextField";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
@@ -9,9 +11,8 @@ import FormLabel from "@mui/material/FormLabel";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
-// import api from "@/app/utils/api";
 
-const AddStudentsForm = () => {
+export default function AddStudentsForm() {
   const [login, setLogin] = useState("");
   const [groupType, setGroupType] = useState("online");
   const [selectedTeacher, setSelectedTeacher] = useState("");
@@ -120,6 +121,4 @@ const AddStudentsForm = () => {
       </form>
     </div>
   );
-};
-
-export default AddStudentsForm;
+}

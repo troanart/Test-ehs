@@ -1,6 +1,9 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
+
 import { Table } from "antd";
+
 import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -63,7 +66,7 @@ const columns = [
   },
 ];
 
-const StudentTable = () => {
+export default function StudentTable() {
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [tableParams, setTableParams] = useState({
@@ -73,30 +76,26 @@ const StudentTable = () => {
     },
   });
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("/api/data/students");
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const studentsData = await response.json();
-        setStudents(studentsData);
-        setLoading(false);
-        setTableParams((prevParams) => ({
-          ...prevParams,
-          pagination: {
-            ...prevParams.pagination,
-            total: studentsData.length, // Установите общее количество элементов
-          },
-        }));
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setLoading(false);
+  useEffect(async () => {
+    try {
+      const response = await fetch("/api/data/students");
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
       }
-    };
-
-    fetchData();
+      const studentsData = await response.json();
+      setStudents(studentsData);
+      setLoading(false);
+      setTableParams((prevParams) => ({
+        ...prevParams,
+        pagination: {
+          ...prevParams.pagination,
+          total: studentsData.length, // Установите общее количество элементов
+        },
+      }));
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setLoading(false);
+    }
   }, []);
 
   const handleTableChange = (pagination, filters, sorter) => {
@@ -117,6 +116,4 @@ const StudentTable = () => {
       onChange={handleTableChange}
     />
   );
-};
-
-export default StudentTable;
+}

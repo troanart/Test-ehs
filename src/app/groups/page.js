@@ -1,11 +1,12 @@
 "use client";
+
 import React from "react";
-import  {
-  ColorToggleButton ,
+import {
+  ColorToggleButton,
   AddGroups,
-  GroupsCardsList ,
-  Legend ,
-} from '@/components'
+  GroupsCardsList,
+  Legend,
+} from "@/components";
 
 export default function Groups() {
   return (

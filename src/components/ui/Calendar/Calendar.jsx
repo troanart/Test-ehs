@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { Badge, Calendar as CalendarComponent} from "antd";
+
+import { Badge, Calendar as CalendarComponent } from "antd";
 
 const getListData = (value) => {
   let listData;
@@ -73,7 +74,7 @@ const getMonthData = (value) => {
   }
 };
 
-const Calendar = () => {
+export default function Calendar() {
   const monthCellRender = (value) => {
     const num = getMonthData(value);
     return num ? (
@@ -83,8 +84,10 @@ const Calendar = () => {
       </div>
     ) : null;
   };
+
   const dateCellRender = (value) => {
     const listData = getListData(value);
+
     return (
       <ul className="events">
         {listData.map((item) => (
@@ -95,11 +98,12 @@ const Calendar = () => {
       </ul>
     );
   };
+
   const cellRender = (current, info) => {
     if (info.type === "date") return dateCellRender(current);
     if (info.type === "month") return monthCellRender(current);
     return info.originNode;
   };
+
   return <CalendarComponent cellRender={cellRender} />;
-};
-export default Calendar;
+}

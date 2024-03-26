@@ -1,4 +1,5 @@
 import React from "react";
+
 import "@/styles/globals.css";
 import { Header, Main, Sidebar } from "@/components";
 
@@ -12,8 +13,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="bg-[#f5f5f5]">
         <Sidebar />
+
         <div className="ml-[200px]">
           <Header />
+
           <Main children={children} />
         </div>
       </body>

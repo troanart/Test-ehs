@@ -6,21 +6,18 @@ import { AddStudents, StudentTable, SearchPanel } from "@/components";
 
 export default function students() {
   const [students, setStudents] = useState([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("/api/data/students");
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const studentsData = await response.json();
-        setStudents(studentsData);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
 
-    fetchData();
+  useEffect(async () => {
+    try {
+      const response = await fetch("/api/data/students");
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const studentsData = await response.json();
+      setStudents(studentsData);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   }, []);
 
   return (
@@ -29,8 +26,10 @@ export default function students() {
         <div className="mr-auto">
           <SearchPanel students={students} />
         </div>
+
         <AddStudents />
       </div>
+
       <StudentTable />
     </div>
   );

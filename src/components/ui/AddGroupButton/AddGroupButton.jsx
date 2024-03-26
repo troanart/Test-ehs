@@ -1,9 +1,8 @@
 "use client";
+
 import React from "react";
 
-import {
-  AddGroupsForm
-} from '@/components'
+import { AddGroupsForm } from "@/components";
 
 import Button from "@mui/material/Button";
 import GroupAddIcon from "@mui/icons-material/GroupAdd";
