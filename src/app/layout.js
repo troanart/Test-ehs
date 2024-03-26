@@ -1,7 +1,7 @@
 import React from "react";
 import "@/styles/globals.css";
-import HeaderComponents from "@/components/ui/Header/Header";
-import Main from "@/components/ui/common/Main/Main";
+import { Header, Main } from "@/components";
+
 import SiderComponents from "@/components/ui/common/Sider/Sider";
 
 export const metadata = {
@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
       <body className="bg-[#f5f5f5]">
         <SiderComponents />
         <div className="ml-[200px]">
-          <HeaderComponents />
+          <Header />
           <Main children={children} />
         </div>
       </body>
