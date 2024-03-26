@@ -1,8 +1,8 @@
 import React from "react";
-import { Breadcrumb as BreadcrumbComponent } from "antd";
+import { Breadcrumb } from "antd";
 import { usePathname } from "next/navigation";
 
-const Breadcrumb = () => {
+const Breadcrumbs = () => {
   const paths = usePathname();
   const pathNames = paths.split().filter((path) => path);
   return (
@@ -15,4 +15,4 @@ const Breadcrumb = () => {
   );
 };
 
-export default BreadcrumbComponent;
+export default Breadcrumbs;
