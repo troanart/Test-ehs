@@ -2,9 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 
-import AddStudents from "@/components/ui/common/students/add-button-students";
-import StudentTable from "@/components/ui/common/students/students-table";
-import SearchPanel from "@/components/ui/common/students/search-panel";
+import { AddStudents, StudentTable, SearchPanel } from "@/components";
 
 export default function students() {
   const [students, setStudents] = useState([]);

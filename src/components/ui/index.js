@@ -24,6 +24,13 @@ export { default as Legend } from "./Legend";
 export { default as MoreStudentsIndicator } from "./MoreStudentsIndicator";
 export { default as StatsInCard } from "./StatsInCard";
 
+// students
+
+export { default as AddStudents } from "./AddStudents";
+export { default as AddStudentsForm } from "./AddStudentsForm";
+export { default as SearchPanel } from "./SearchPanel";
+export { default as StudentTable } from "./StudentTable";
+
 // Header
 
 export { default as Avatar } from "./Avatar";
