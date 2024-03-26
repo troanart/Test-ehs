@@ -47,7 +47,7 @@ const menuItems = [
   },
 ];
 
-export default function MenuComponent() {
+export default function Menu() {
   return (
     <Box
       sx={{

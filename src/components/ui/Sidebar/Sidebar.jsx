@@ -1,6 +1,6 @@
 import React from "react";
 import Sider from "antd/es/layout/Sider";
-import MenuComponent from "./menu";
+import { Menu } from "@/components";
 
 export default function SiderComponents() {
   return (
@@ -21,7 +21,7 @@ export default function SiderComponents() {
           ASAT
         </h1>
       </div>
-      <MenuComponent />
+      <Menu />
     </Sider>
   );
 }
