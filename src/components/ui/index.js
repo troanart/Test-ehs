@@ -9,7 +9,7 @@ export { default as ProgressCircul } from "./ProgressCircul";
 export { default as TeacherTopList } from "./TeacherTopList";
 export { default as Calendar } from "./Calendar";
 
-// groups
+// Groups
 export { default as AddGroupButton } from "./AddGroupButton";
 export { default as AddGroupsForm } from "./AddGroupsForm";
 export { default as CollapseBtn } from "./CollapseBtn";
@@ -24,7 +24,7 @@ export { default as Legend } from "./Legend";
 export { default as MoreStudentsIndicator } from "./MoreStudentsIndicator";
 export { default as StatsInCard } from "./StatsInCard";
 
-// students
+// Students
 
 export { default as AddStudents } from "./AddStudents";
 export { default as AddStudentsForm } from "./AddStudentsForm";
@@ -35,12 +35,12 @@ export { default as StudentTable } from "./StudentTable";
 
 export { default as Avatar } from "./Avatar";
 export { default as Breadcrambs } from "./Breadcrumbs";
-export { default as Header } from "./Header";
+
 export { default as AccountMenu } from "./AccountMenu";
 
 // Main
 export { default as Main } from "./Main";
 
 // Sidebar
-export { default as Sidebar } from "./Sidebar";
+
 export { default as Menu } from "./Menu";
