@@ -21,17 +21,20 @@ export default function CardList() {
     groups: [],
   });
 
-  useEffect(async () => {
-    try {
-      const response = await fetch("/api/data");
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch("/api/data");
+        // if (!response.ok) {
+        //   throw new Error("Network response was not ok");
+        // }
+        const responseData = await response.json();
+        setData(responseData);
+      } catch (error) {
+        console.error("There was a problem fetching the data:", error);
       }
-      const responseData = await response.json();
-      setData(responseData);
-    } catch (error) {
-      console.error("There was a problem fetching the data:", error);
     }
+    fetchData();
   }, []);
 
   const menuItems = [

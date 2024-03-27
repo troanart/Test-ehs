@@ -14,17 +14,20 @@ import {
 export default function TeacherTopList() {
   const [teachers, setTeacher] = useState([]);
 
-  useEffect(async () => {
-    try {
-      const response = await fetch("/api/data/teachers");
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch("/api/data/teachers");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const responseData = await response.json();
+        setTeacher(responseData);
+      } catch (error) {
+        console.error("There was a problem fetching the data:", error);
       }
-      const responseData = await response.json();
-      setTeacher(responseData);
-    } catch (error) {
-      console.error("There was a problem fetching the data:", error);
     }
+    fetchData();
   }, []);
 
   return (

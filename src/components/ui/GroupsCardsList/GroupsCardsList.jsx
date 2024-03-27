@@ -9,17 +9,20 @@ import { GroupCard } from "@/components";
 export default function GroupsCardsList() {
   const [groups, setGroups] = useState([]);
 
-  useEffect(async () => {
-    try {
-      const response = await fetch("/api/data/groups");
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch("/api/data/groups");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const responseData = await response.json();
+        setGroups(responseData);
+      } catch (error) {
+        console.error("There was a problem fetching the data:", error);
       }
-      const responseData = await response.json();
-      setGroups(responseData);
-    } catch (error) {
-      console.error("There was a problem fetching the data:", error);
     }
+    fetchData();
   }, []);
 
   const deleteGroup = (groupId) => {

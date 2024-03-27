@@ -3,7 +3,7 @@
 import React from "react";
 import {
   ColorToggleButton,
-  AddGroups,
+  AddGroupButton,
   GroupsCardsList,
   Legend,
 } from "@/components";
@@ -18,7 +18,7 @@ export default function Groups() {
         <div className="mx-auto">
           <Legend />
         </div>
-        <AddGroups />
+        <AddGroupButton />
       </div>
       <GroupsCardsList />
     </div>
